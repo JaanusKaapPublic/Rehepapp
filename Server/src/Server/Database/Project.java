@@ -1,5 +1,6 @@
 package Server.Database;
 
+import Caches.ProjectsCache;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -80,6 +81,43 @@ public class Project
             stmt.setString(4, magic);
             stmt.setInt(5, isActive);
             stmt.setInt(6, isDefault);
+            return (stmt.executeUpdate() > 0);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return false;
+    }     
+        
+    static public boolean setActive(Connection connection, Integer projectId, int active)
+    {
+        try
+        {
+            PreparedStatement stmt = connection.prepareStatement("UPDATE Project SET active = ? WHERE id = ?");
+            stmt.setInt(1, active);
+            stmt.setInt(2, projectId);
+            if(stmt.executeUpdate() > 0)
+            {
+                if(active == 1)
+                    ProjectsCache.getProject(connection, projectId);
+                return true;
+            }
+            return false;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return false;
+    } 
+        
+    static public boolean setDefault(Connection connection, Integer projectId)
+    {
+        try
+        {
+            PreparedStatement stmt = connection.prepareStatement("UPDATE Project SET isdefault = IF(id = ?, 1, 0)");
+            stmt.setInt(1, projectId);
             return (stmt.executeUpdate() > 0);
         }
         catch(Exception e)

@@ -16,8 +16,17 @@ public class CLI extends Thread
         
         commands = new HashMap<String, CliCommand>();
         commands.put("help", new CliHelp());
-        commands.put("add-project", new CliAddProject(server));
-        commands.put("stats", new CliStats(server));
+        
+        CliProject project = new CliProject(server);
+        commands.put("add-project", project);
+        commands.put("activate", project);
+        commands.put("deactivate", project);
+        commands.put("default", project);
+                
+        CliStats stats = new CliStats(server);
+        commands.put("stats-proj", stats);
+        commands.put("stats-bot", stats);
+        
         commands.put("coverage", new CliCoverage(server));
     }
     
