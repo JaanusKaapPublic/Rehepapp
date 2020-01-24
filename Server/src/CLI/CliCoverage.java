@@ -4,6 +4,7 @@ import Caches.ProjectsCache;
 import Server.Database.CoverageCalc;
 import Server.Server;
 import Server.Database.Project;
+import Server.Database.Testcase;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,15 +24,12 @@ public class CliCoverage implements CliCommand
     {
         Connection con = server.getDBconnection();
         String result = "";
-        String outputDir = null;
         
         String[] parts = input.split(" ");
-        if(parts.length < 2 || parts.length > 3)
-            return "Arguments needed: " + parts[0] + " {Project ID} [Files output dir (optional)]";
-        if(parts.length == 3)
-            outputDir = parts[2];
+        if(parts.length != 2)
+            return "Arguments needed: " + parts[0] + " {Project ID}";
         
-        System.out.println("Transfreing data");
+        System.out.println("Transferring data");
         CoverageCalc.transferData(con, Integer.parseInt(parts[1]));
         CoverageCalc.updateTestcases(con);
         
@@ -40,7 +38,9 @@ public class CliCoverage implements CliCommand
             int id = CoverageCalc.getBestCoverageId(con);
             if(id == 0)
                 break;
+            String url = CoverageCalc.getUrl(con, id);
             System.out.println("Selected testcase with id " + id + "");
+            System.out.println("  " + url);
             List<Integer> bbs = CoverageCalc.getBestCoverageBlocks(con, id);
             System.out.println("  " + bbs.size() + " blocks, removing them");
             CoverageCalc.removeBlocks(con, bbs);
@@ -49,7 +49,6 @@ public class CliCoverage implements CliCommand
         }
         
         con.close();
-        System.out.println("Minimizing finished");
-        return result;
+        return "Minimizing finished";
     }
 }

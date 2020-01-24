@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Tracer.h"
 #include <atlbase.h>
+#include <string>
 
 
 void Tracer::toLower(WCHAR* data)

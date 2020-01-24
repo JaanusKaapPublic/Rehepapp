@@ -45,7 +45,6 @@ def doApiReq(url, post = None):
 		else:
 			return (True, data['data'])
 	except:
-		raise
 		return (False, "Connection exception")
 
 def getMyIp():

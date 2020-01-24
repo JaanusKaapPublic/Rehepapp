@@ -28,6 +28,8 @@ public class Collecter  extends RestBase
         Map<String, String> getParams = MyUtils.queryToMap(req.getRequestURI().getRawQuery());
         switch(op)
         {
+            case "getLinks":
+                return getLinks(con, getParams);
             case "getName":
                 return getName(con);
             case "registerBot":
@@ -50,7 +52,32 @@ public class Collecter  extends RestBase
                 return addTestcase(con, postParams);
         }
         return "Bad operation";
-    }    
+    }     
+    
+    protected String getLinks(Connection con, Map<String, String> getParams)
+    {
+        try
+        {
+            ResultSet rs;
+            Integer project_id = null, start = 0, count = 100;
+            
+            if(getParams.containsKey("project"))
+                project_id = Project.getId(con, getParams.get("project"));
+            if(getParams.containsKey("skip"))
+                start = Integer.parseInt(getParams.get("skip"));
+            if(getParams.containsKey("count"))
+                count = Integer.parseInt(getParams.get("count"));
+            
+            Object[] params = {project_id, start, count};
+            return getStandardGetParamsJSON(con, "id, url, hash, size", "testcase", "WHERE project_id = ? AND id > ? ORDER BY id LIMIT ?", params);
+        }   
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return getErrorJSON("Inserting bot_collect failed", e.getLocalizedMessage());
+        }
+    }
+    
     
     protected String getName(Connection con)
     {

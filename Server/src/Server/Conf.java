@@ -18,7 +18,7 @@ public class Conf extends Properties
         setProperty("DEBUG", "1");
         
         setProperty("DB_USERNAME", "root");
-        setProperty("DB_PASSWORD", "koolike");
+        setProperty("DB_PASSWORD", "s3cr3t");
         setProperty("DB_HOST", "127.0.0.1");
         setProperty("DB_SCHEMA", "rehepapp");
         

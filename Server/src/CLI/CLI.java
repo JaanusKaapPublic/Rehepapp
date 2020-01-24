@@ -24,8 +24,8 @@ public class CLI extends Thread
         commands.put("default", project);
                 
         CliStats stats = new CliStats(server);
-        commands.put("stats-proj", stats);
-        commands.put("stats-bot", stats);
+        commands.put("projects", stats);
+        commands.put("bots", stats);
         
         commands.put("coverage", new CliCoverage(server));
     }

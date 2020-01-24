@@ -25,33 +25,6 @@ namespace Analyzer
             fileSaveDialog.AddExtension = true;
             detectDefaults();
         }
-
-        private bool addFile(List<String> fileList,  String filename)
-        {
-            byte[] buff = null;
-            FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
-            BinaryReader br = new BinaryReader(fs);
-            buff = br.ReadBytes(2);
-            br.Close();
-            fs.Close();
-            if(buff.Length< 2 || buff[0] != 'M' || buff[1] != 'Z')
-                return false;
-            fileList.Add(filename);
-            return true;
-        }
-
-        private void addDirectory(List<String> fileList, String dirname)
-        {
-            foreach (string f in Directory.GetFiles(dirname))
-            {
-                addFile(fileList, f);
-
-            }
-            foreach (string d in Directory.GetDirectories(dirname))
-            {
-                addDirectory(fileList, d);
-            }
-        }
         
         private void addDirBtn_Click(object sender, EventArgs e)
         {
@@ -80,12 +53,9 @@ namespace Analyzer
 
         private void startBtn_Click(object sender, EventArgs e)
         {
-            List<String> files = new List<String>();
-            addDirectory(files, peDir.Text);
-
             AnalyseProgress progressForm = new AnalyseProgress();
             progressForm.Show(this);
-            progressForm.startAnalysing(idaFile.Text, files, peDir.Text, outputFile.Text);
+            progressForm.startAnalysing(idaFile.Text, peDir.Text, outputFile.Text);
         }
 
         private void detectDefaults()
@@ -110,7 +80,7 @@ namespace Analyzer
                 peDir.Text = list.ElementAt(0);
 
             //Codeblocks
-            outputFile.Text = Directory.GetCurrentDirectory() + "\\result.codeblocks"; 
+            outputFile.Text = Directory.GetCurrentDirectory() + "\\basicblocks.bbl"; 
         }
     }
 }

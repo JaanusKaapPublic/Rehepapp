@@ -110,4 +110,22 @@ public class CoverageCalc
             e.printStackTrace();
         }
     }
+    
+    static public String getUrl(Connection connection, Integer testcaseId)
+    {
+        try
+        {
+            PreparedStatement stmt = connection.prepareStatement("SELECT url FROM coverage_calc_file where testcase_id = ?");
+            stmt.setInt(1, testcaseId);
+            ResultSet rs = stmt.executeQuery();
+            if(!rs.next())
+               return null;
+            return rs.getString("url");
+        }
+        catch(Exception e)
+        {            
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

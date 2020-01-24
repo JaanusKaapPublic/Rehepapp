@@ -11,8 +11,8 @@ public class CliHelp implements CliCommand
         helpData += "deactivate\n";
         helpData += "default\n\n";
         
-        helpData += "stats-proj\n";
-        helpData += "stats-bot\n\n";
+        helpData += "projects\n";
+        helpData += "bots\n\n";
         
         helpData += "coverage\n";
         return helpData;

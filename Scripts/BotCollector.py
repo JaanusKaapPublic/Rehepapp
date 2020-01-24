@@ -6,12 +6,13 @@ import thread
 import threading
 import getopt
 import sys
+import json
 
 class FileCollector:
 	apiUrl = "http://127.0.0.1:8000/API/Collecter"
 	botName = None
-	googleDomain = "ee"
-	timeBetweenSearches = 45
+	googleDomain = "com"
+	timeBetweenSearches = 50
 	maxThreads = 8
 	maxSize = 10 * 1024 * 1024
 	logLevel = 1
@@ -30,11 +31,12 @@ class FileCollector:
 			print "[INFO-IMPORTANT]: %s" % msg
 		elif level == 2:
 			print "[WARNING]: %s" % msg
-
+		elif level == 3:
+			print "[ERROR]: %s" % msg
+			
 	def error(self, msg):
-		print "[ERROR]: %s" % msg
-		exit()
-
+		self.log(msg, 3)
+		exit(0)
 	
 	def downloadFile(self, project, magicNumber, url):
 		while True:
@@ -157,31 +159,37 @@ class FileCollector:
 				continue
 			self.singlePrefix(order['project'], order['extension'], order['magic'], order['prefix'])
 			self.markDone(order['project'], order['prefix'])
+			
+	def loadConf(self):
+		data = json.load(open("collector.conf", "rb"))
+		
+		if "url" in data:
+			self.apiUrl = data["url"]
+		else:
+			if "host" in data:
+				self.apiUrl = "http://%s:8000/API/Collecter" % data["host"]
+				
+		if "threads" in data:
+			self.maxThreads = data["threads"]
+				
+		if "sleep" in data:
+			self.timeBetweenSearches = data["sleep"]
+				
+		if "google" in data:
+			self.googleDomain = data["google"]
+				
+		if "name" in data:
+			self.botName = data["name"]
+				
+		if "log" in data:
+			self.logLevel = data["log"]
+			
+		if "size" in data:
+			self.maxSize = data["size"]
 		
 	
 obj = FileCollector()
-	
-try:
-	opts, args = getopt.getopt(sys.argv[1:], "u:p:t:s:g:n:l:", ["url=", "threads=", "sleep=", "google=", "name=", "log="])
-except getopt.GetoptError as err:
-	print str(err)
-	exit()
-	
-for o, a in opts:
-	if o in ("-u", "--url"):
-		obj.apiUrl = a
-	elif o in ("-t", "--threads"):
-		obj.maxThreads = int(a)
-	elif o in ("-s", "--sleep"):
-		obj.timeBetweenSearches = int(a)
-	elif o in ("-g", "--google"):
-		obj.googleDomain = a
-	elif o in ("-n", "--name"):
-		obj.botName = a
-	elif o in ("-l", "--log"):
-		obj.logLevel = int(a)
-
+obj.loadConf()
 if obj.botName is None:
-	obj.generateDefaultName()
-				
+	obj.generateDefaultName()				
 obj.start()

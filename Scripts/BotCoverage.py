@@ -11,7 +11,7 @@ import thread
 
 class Coverage:
 	project = None
-	apiUrl = None 
+	apiUrl = "http://127.0.0.1:8000/API/Coverage" 
 	botName = None
 	filesDir = None
 	extension = None
@@ -38,6 +38,10 @@ class Coverage:
 			print "[WARNING]: %s" % msg
 		elif level == 3:
 			print "[ERROR]: %s" % msg
+			
+	def error(self, msg):
+		self.log(msg, 3)
+		exit(0)
 	
 	def runCommands(self):
 		for cmd in self.commandsToRun:
@@ -233,37 +237,59 @@ class Coverage:
 		
 		while True:
 			self.doCoverage()
+			
+	def loadConf(self):
+		data = json.load(open("coverage.conf", "rb"))
+		
+		if "url" in data:
+			self.apiUrl = data["url"]
+		else:
+			if "host" in data:
+				self.apiUrl = "http://%s:8000/API/Coverage" % data["host"]
+				
+		if "project" in data:
+			self.project = data["project"]
+		else:
+			error("No project specified")
+			
+		if "extension" in data:
+			self.extension = data["extension"]
+		else:
+			error("No extension specified")
+			
+		if "tmpDir" in data:
+			self.filesDir = data["tmpDir"]
+			if self.filesDir[-1] != "\\" and self.filesDir[-1] != "/":
+				self.filesDir += "\\" 
+		else:
+			error("No tmpDir specified")
+			
+		if "codeblocks" in data:
+			self.basicblockFile = data["codeblocks"]
+		else:
+			error("No codeblocks specified")
+			
+		if "executable" in data:
+			self.executable = data["executable"]
+		else:
+			error("No executable specified")
+			
+		if "baseDir" in data:
+			self.baseDir = data["baseDir"]
+			while self.baseDir[-1] == "\\" and self.baseDir[-1] == "/":
+				self.baseDir = self.baseDir[0:-1]
+		else:
+			error("No baseDir specified")
+						
+		if "waitTime" in data:
+			self.waitTime = data["waitTime"]
+		if "botName" in data:
+			self.botName = data["botName"]			
+		if "preCmds" in data:
+			for cmd in data["preCmds"]:
+				self.commandsToRun.append(cmd)
 		
 	
 obj = Coverage()
-obj.project = 'PDF'
-obj.apiUrl = "http://127.0.0.1:8000/API/Coverage"
-obj.extension = 'PDF'
-obj.filesDir = "c:\\Work\\Rehepapp\\Scripts\\files\\"
-obj.basicblockFile = 'c:\\Work\\Rehepapp\\Scripts\\AdobeReader25.codeblocks'
-obj.executable = 'c:\\Program Files (x86)\\Adobe\\Acrobat Reader DC\\Reader\\AcroRd32.exe'
-obj.baseDir = "c:\\Program Files (x86)\\Adobe\\Acrobat Reader DC\\Reader"
-obj.waitTime = 8
-obj.botName = "TestClient"
-#obj.commandsToRun.append("REG DELETE HKCU\\Software\\Microsoft\\Office\\16.0\\Word\\Resiliency /f")
-#obj.commandsToRun.append("del /f /q C:\\Users\\jaanus\\AppData\\Local\\Microsoft\\Windows\\INetCache\\Content.Word\\*")
-#obj.commandsToRun.append("del /f /q C:\\Users\\jaanus\\AppData\\Local\\Temp\\*")
-#obj.commandsToRun.append("del /f /q C:\\Users\\jaanus\\AppData\\Roaming\\Microsoft\\Office\\Recent\\*")
-#obj.commandsToRun.append("del /f /q C:\\Users\\jaanus\\AppData\\Roaming\\Microsoft\\Windows\\Recent\\*")
-#obj.commandsToRun.append("del /f /q /A:H C:\\Work\\files\\~*.doc")
-
-try:
-	opts, args = getopt.getopt(sys.argv[1:], "u:p:w:t:", ["url=",  "wait=", "target="])
-except getopt.GetoptError as err:
-    print str(err)
-    exit()
-	
-for o, a in opts:
-    if o in ("-u", "--url"):
-        obj.apiUrl = a
-    elif o in ("-w", "--wait"):
-        obj.waitTime = int(a)
-    elif o in ("-t", "--target"):
-        obj.project = int(a)
-				
+obj.loadConf()				
 obj.start()

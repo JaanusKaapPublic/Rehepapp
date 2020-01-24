@@ -16,7 +16,14 @@
 /Tracer/Debug/
 /Tracer/Release/
 /Tracer/x64/
+/Utils/CoverageCommon/bin/
+/Utils/CoverageMain/bin/
+/Utils/CoverageMinimizer/bin/
+/Utils/CoveragePlanter/bin/
+/Utils/CoverageReducer/bin/
 
+*.jar
+*.exe
 *_i.c
 *_p.c
 *_h.h

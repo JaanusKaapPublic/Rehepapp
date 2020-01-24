@@ -176,7 +176,7 @@ public class Coverage  extends RestBase
                 ModuleCache moduleObj = projectObj.getOrCreateModule(con, module.getString("name"));   
                 synchronized(moduleObj)
                 {
-                    Module.insertConnection(con, testcaseId, moduleObj.getId());
+                    Server.Database.Module.insertConnection(con, testcaseId, moduleObj.getId());
                 
                     JSONArray basicblocks = module.getJSONArray("basicblocks");
                     basicBlocksToAdd.clear();

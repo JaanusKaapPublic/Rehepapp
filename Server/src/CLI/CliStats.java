@@ -18,9 +18,9 @@ public class CliStats implements CliCommand
     public String handle(String input) throws Exception
     {
         String cmdType = input.split(" ", 2)[0];
-        if(cmdType.equals("stats-proj"))
+        if(cmdType.equals("projects"))
             return handleProject(input);
-        else if(cmdType.equals("stats-bot"))
+        else if(cmdType.equals("bots"))
             return handleBot(input);
         return "WTF?";
     }

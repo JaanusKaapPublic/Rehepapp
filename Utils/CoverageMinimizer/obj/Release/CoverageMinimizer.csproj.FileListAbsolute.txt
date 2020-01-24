@@ -1,0 +1,8 @@
+c:\WorkRehepapp\Utils\CoverageMinimizer\bin\Release\CoverageMinimizer.exe.config
+c:\WorkRehepapp\Utils\CoverageMinimizer\bin\Release\CoverageMinimizer.exe
+c:\WorkRehepapp\Utils\CoverageMinimizer\bin\Release\CoverageMinimizer.pdb
+c:\WorkRehepapp\Utils\CoverageMinimizer\obj\Release\CoverageMinimizer.Form1.resources
+c:\WorkRehepapp\Utils\CoverageMinimizer\obj\Release\CoverageMinimizer.Properties.Resources.resources
+c:\WorkRehepapp\Utils\CoverageMinimizer\obj\Release\CoverageMinimizer.csproj.GenerateResource.cache
+c:\WorkRehepapp\Utils\CoverageMinimizer\obj\Release\CoverageMinimizer.exe
+c:\WorkRehepapp\Utils\CoverageMinimizer\obj\Release\CoverageMinimizer.pdb

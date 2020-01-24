@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CoverageTools", "CoverageTools\CoverageTools.shproj", "{73363B6D-2C6C-4DEA-8C86-711D30A0FC8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoverageCommon", "CoverageCommon\CoverageCommon.csproj", "{7BB53377-13FB-49BB-97A9-4F9952E480CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoveragePlanter", "CoveragePlanter\CoveragePlanter.csproj", "{6BB086D8-9C64-4178-817B-200638F7BCEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoverageReducer", "CoverageReducer\CoverageReducer.csproj", "{1F703652-D67B-4660-AFA3-5BE93E1774E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoverageMain", "CoverageMain\CoverageMain.csproj", "{3AE623EA-E83E-4793-BC71-96E87488E09A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoverageMinimizer", "CoverageMinimizer\CoverageMinimizer.csproj", "{9A21AA39-1518-447F-887C-BD153017B822}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		CoverageTools\CoverageTools.projitems*{1f703652-d67b-4660-afa3-5be93e1774e1}*SharedItemsImports = 4
+		CoverageTools\CoverageTools.projitems*{3ae623ea-e83e-4793-bc71-96e87488e09a}*SharedItemsImports = 4
+		CoverageTools\CoverageTools.projitems*{6bb086d8-9c64-4178-817b-200638f7bcee}*SharedItemsImports = 4
+		CoverageTools\CoverageTools.projitems*{73363b6d-2c6c-4dea-8c86-711d30a0fc8c}*SharedItemsImports = 13
+		CoverageTools\CoverageTools.projitems*{7bb53377-13fb-49bb-97a9-4f9952e480ce}*SharedItemsImports = 4
+		CoverageTools\CoverageTools.projitems*{9a21aa39-1518-447f-887c-bd153017b822}*SharedItemsImports = 4
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BB53377-13FB-49BB-97A9-4F9952E480CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BB53377-13FB-49BB-97A9-4F9952E480CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BB53377-13FB-49BB-97A9-4F9952E480CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BB53377-13FB-49BB-97A9-4F9952E480CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BB086D8-9C64-4178-817B-200638F7BCEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BB086D8-9C64-4178-817B-200638F7BCEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BB086D8-9C64-4178-817B-200638F7BCEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BB086D8-9C64-4178-817B-200638F7BCEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F703652-D67B-4660-AFA3-5BE93E1774E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F703652-D67B-4660-AFA3-5BE93E1774E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F703652-D67B-4660-AFA3-5BE93E1774E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F703652-D67B-4660-AFA3-5BE93E1774E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AE623EA-E83E-4793-BC71-96E87488E09A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AE623EA-E83E-4793-BC71-96E87488E09A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AE623EA-E83E-4793-BC71-96E87488E09A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AE623EA-E83E-4793-BC71-96E87488E09A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A21AA39-1518-447F-887C-BD153017B822}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A21AA39-1518-447F-887C-BD153017B822}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A21AA39-1518-447F-887C-BD153017B822}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A21AA39-1518-447F-887C-BD153017B822}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3F6ADEC3-E1E7-4131-AFCB-0DED47A8047F}
+	EndGlobalSection
+EndGlobal

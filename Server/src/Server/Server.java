@@ -42,7 +42,7 @@ public class Server
     {        
         try {
             HttpServer server;
-            server = HttpServer.create(new InetSocketAddress(8000), 0);
+            server = HttpServer.create(new InetSocketAddress("0.0.0.0",8000), 0);
             server.createContext("/API/" + Collecter.myClassBase, new Collecter(database, conf));
             server.createContext("/API/" + Coverage.myClassBase, new Coverage(database, conf));
             server.setExecutor(null); 

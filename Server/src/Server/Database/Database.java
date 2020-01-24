@@ -22,7 +22,8 @@ public class Database
                             + "user=" + conf.getProperty("DB_USERNAME")
                             + "&password=" + conf.getProperty("DB_PASSWORD")
                             + "&rewriteBatchedStatements=true"
-                            + "&useSSL=false");
+                            + "&useSSL=false"
+                            + "&allowPublicKeyRetrieval=true");
         con.setAutoCommit(true);
         return con;        
     }    

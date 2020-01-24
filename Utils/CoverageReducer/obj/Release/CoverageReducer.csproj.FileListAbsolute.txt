@@ -1,0 +1,17 @@
+c:\Work\FoxHexFile\CoverageTools\CoverageReducer\bin\Release\CoverageReducer.exe.config
+c:\Work\FoxHexFile\CoverageTools\CoverageReducer\bin\Release\CoverageReducer.exe
+c:\Work\FoxHexFile\CoverageTools\CoverageReducer\bin\Release\CoverageReducer.pdb
+c:\Work\FoxHexFile\CoverageTools\CoverageReducer\obj\Release\CoverageReducer.Form1.resources
+c:\Work\FoxHexFile\CoverageTools\CoverageReducer\obj\Release\CoverageReducer.Properties.Resources.resources
+c:\Work\FoxHexFile\CoverageTools\CoverageReducer\obj\Release\CoverageReducer.csproj.GenerateResource.cache
+c:\Work\FoxHexFile\CoverageTools\CoverageReducer\obj\Release\CoverageReducer.csproj.CoreCompileInputs.cache
+c:\Work\FoxHexFile\CoverageTools\CoverageReducer\obj\Release\CoverageReducer.exe
+c:\Work\FoxHexFile\CoverageTools\CoverageReducer\obj\Release\CoverageReducer.pdb
+c:\WorkRehepapp\Utils\CoverageReducer\bin\Release\CoverageReducer.exe.config
+c:\WorkRehepapp\Utils\CoverageReducer\bin\Release\CoverageReducer.exe
+c:\WorkRehepapp\Utils\CoverageReducer\bin\Release\CoverageReducer.pdb
+c:\WorkRehepapp\Utils\CoverageReducer\obj\Release\CoverageReducer.Form1.resources
+c:\WorkRehepapp\Utils\CoverageReducer\obj\Release\CoverageReducer.Properties.Resources.resources
+c:\WorkRehepapp\Utils\CoverageReducer\obj\Release\CoverageReducer.csproj.GenerateResource.cache
+c:\WorkRehepapp\Utils\CoverageReducer\obj\Release\CoverageReducer.exe
+c:\WorkRehepapp\Utils\CoverageReducer\obj\Release\CoverageReducer.pdb
